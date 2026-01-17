@@ -1,0 +1,42 @@
+### JetBrains (PyCharm) ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Python ###
+# 字节码文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虚拟环境
+venv/
+.venv/
+env/
+.env/
+ENV/
+build/
+dist/
+
+# 单元测试与覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+
+# 日志文件
+*.log
+
+### 操作系统 ###
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+desktop.ini
+
+### 敏感信息 ###
+.env
+*.key

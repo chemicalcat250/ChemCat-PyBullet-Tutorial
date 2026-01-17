@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot name="my_custom_robot">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.5 0.3 0.1"/>
+      </geometry>
+      <material name="blue"><color rgba="0 0 0.8 1"/></material>
+    </visual>
+    <collision>
+      <geometry><box size="0.5 0.3 0.1"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <link name="front_left_wheel">
+    <visual>
+      <geometry><cylinder length="0.05" radius="0.1"/></geometry>
+      <material name="black"><color rgba="0 0 0 1"/></material>
+    </visual>
+  </link>
+
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="0.2 0.15 0" rpy="1.5708 0 0"/> <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="arm_link">
+    <visual>
+      <geometry><box size="0.05 0.05 0.4"/></geometry>
+      <material name="grey"><color rgba="0.5 0.5 0.5 1"/></material>
+    </visual>
+  </link>
+
+  <joint name="arm_extension_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="arm_link"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/> <limit lower="0" upper="0.3" effort="10" velocity="1.0"/>
+  </joint>
+
+  <link name="gripper_finger">
+    <visual>
+      <geometry><box size="0.02 0.1 0.02"/></geometry>
+    </visual>
+  </link>
+
+  <joint name="gripper_joint" type="revolute">
+    <parent link="arm_link"/>
+    <child link="gripper_finger"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.5" upper="0.5" effort="5" velocity="1.0"/>
+  </joint>
+
+</robot>
